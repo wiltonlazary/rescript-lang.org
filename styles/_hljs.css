@@ -5,6 +5,7 @@ Docco style used in http://jashkenas.github.com/docco/ converted by Simon Madine
 /* purgecss start ignore */
 .hljs {
   display: block;
+  
   /*overflow-x: auto;*/
   /*background: #f8f8ff;*/
 }
@@ -15,12 +16,11 @@ Docco style used in http://jashkenas.github.com/docco/ converted by Simon Madine
 }
 
 .hljs-operator, .hljs-literal {
-  color: #A766D0; /* TODO: add to TW */
-  /*@apply text-code-5  */
+  @apply text-water;
 }
 
 .hljs-comment {
-  @apply text-code-4;
+  @apply text-gray-40;
 }
 
 .hljs-selector-tag,
@@ -29,21 +29,20 @@ Docco style used in http://jashkenas.github.com/docco/ converted by Simon Madine
 }
 
 .hljs-keyword {
-  color: #38B790; /* TODO: add to TW */
+  @apply text-berry;
 }
 
 .hljs-number,
 .hljs-string,
 .hljs-doctag {
-  color: #1A8AD3; /* TODO: add to TW */
-  /*@apply text-code-2;*/
+  @apply text-orange;
 }
 
 .hljs-selector-id,
 .hljs-selector-class,
 .hljs-section,
 .hljs-type {
-  color: #19469d;
+  @apply text-turtle;
 }
 
 .hljs-params {
@@ -57,7 +56,7 @@ Docco style used in http://jashkenas.github.com/docco/ converted by Simon Madine
 .hljs-tag,
 .hljs-name,
 .hljs-attribute {
-  color: #376fdd;
+  @apply text-sky;
   font-weight: normal;
 }
 
@@ -82,7 +81,7 @@ Docco style used in http://jashkenas.github.com/docco/ converted by Simon Madine
 }
 
 .hljs-meta {
-  color: #999;
+  @apply text-gray-60;
 }
 
 .hljs-deletion {
@@ -101,43 +100,60 @@ Docco style used in http://jashkenas.github.com/docco/ converted by Simon Madine
   font-weight: bold;
 }
 
+.hljs-function {
+  color: #8AAEC8;
+}
+
+.hljs-module-identifier {
+  @apply text-water
+}
+
 /* tweaks to syntax highlighting, assuming atom-one-light theme */
 
 .hljs-character {
-  color: #50a14f;
-}
-.hljs-module-identifier {
-  @apply text-berry;
-}
-.hljs-constructor {
-  color: #EB523E; /* TODO: add to TW */
-  /*@apply text-code-1;*/
+  @apply text-turtle-dark;
 }
 
-.hljs-line-highlight {
-  @apply w-full inline-block bg-berry-15;
+.hljs-constructor {
+@apply text-orange
 }
 
 /* DARK MODE COLORS */
+
+.hljs.dark {
+  @apply text-gray-30
+}
+
+.hljs.dark .hljs-module-identifier {
+  @apply text-fire-dark
+}
 
 .hljs.dark .hljs-comment {
   color: #546E7A;
 }
 
+.hljs.dark .hljs-operator, .hljs.dark .hljs-literal {
+  @apply text-ocean-dark;
+}
+
+.hljs.dark .hljs-tag, .hljs.dark .hljs-name, .hljs.dark .hljs-attribute {
+  @apply text-water-dark;
+  font-weight: normal;
+}
+
 .hljs.dark .hljs-number,
 .hljs.dark .hljs-string,
 .hljs.dark .hljs-doctag {
-  @apply text-dark-code-3;
-  /*@apply text-code-2;*/
+  @apply text-orange-dark;
 }
 
 .hljs.dark .hljs-keyword {
-  @apply text-berry;
+  @apply text-berry-dark-50;
 }
 
 .hljs.dark .hljs-built_in,
 .hljs.dark .hljs-builtin-name {
-  @apply text-dark-code-2;
+  @apply text-water-dark;
 }
 
 .hljs.dark .hljs-title {

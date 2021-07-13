@@ -13,8 +13,7 @@ Open the [localhost:3000/blog](/blog) page to see the blog page.
 
 ## Create a new file
 
-Blogposts are located in the `./_blogposts` directory.
-Please stick to the following filename convention to maintain a natural sort order on every file-system:
+Blogposts are located in the `./_blogposts` directory. File name starts with the date to maintain a natural sort order:
 
 ```
 _blogposts/YYYY-MM-DD-[title].mdx
@@ -26,30 +25,12 @@ For example, let's create a new file:
 touch _blogposts/2020-01-30-my-new-blog-post.mdx
 ```
 
-### Map the file to a URL
-
-Open the `index_data/blog_posts.json` file and add a new mapping like this:
-
-```
-{
-  "my-new-blog-post": "2020-01-30-my-new-blog-post.mdx",
-}
-```
-
-The key describes the final slug (e.g. `/blog/my-new-blog-post`), while the value defines the relative filepath within the `_blogposts` directory.
-
-Save your changes within `index_data/blog_posts.json` and refresh your browser within [/blog](/blog).
-You should now see a warning for some malformed frontmatter data. Let's fix this!
+Refresh your browser within [/blog](/blog). You should now see a warning for some malformed frontmatter data. Let's fix this!
 
 ## Add Frontmatter Data
 
 Each blogpost requires a certain set of meta information (so called
 "frontmatter"), otherwise it can't be displayed in the blog.
-
-In
-development mode, you will see error messages for invalid frontmatter on the
-`localhost:3000/blog` url. Blogposts with invalid frontmatter will not be
-rendered and displayed in production, so make sure to fix those errors.
 
 Frontmatter is put **on the top of your file**. Here is a fully working example
 of all available attributes:
@@ -60,36 +41,31 @@ author: hongbo
 co-authors:
   - chenglou
   - ryyppy
-date: "2017-10-01" 
+date: "2017-10-01"
 previewImg:
-category: compiler
 badge: release
 title: Bloomberg announces BuckleScript 1.0
 description: |
   some multiline
   description
-canonical: https://rescript-lang.org/blog/2017/10/01/announcing-1-0
 ---
 ```
 
-- `author`: An author alias as defined in `./index_data/blog_authors.json`
+- `author`: An author alias as defined in `./data/blog_authors.json`
 - `co-authors`: A list of co-author aliases (same aliases allowed as in the `author` field)
 - `date`: A **string** date (always make sure to use the `"`, otherwise yaml
   will parse it as a `date`). The date format is `"YYYY-MM-DD hh:mm"`. All blog
   posts are ordered ascending by date.
 - `previewImg`: The image shown in the blog overview, which will also be used
   as a link preview image
-- `category` (optional): Categories allow filtering on the blog overview. Available categories are `compiler`, `syntax`, `ecosystem`, `docs`, `community`
 - `badge`: An additional badge on the blog, on top of the preview image.
   Available values are `release`, `testing`, `preview`, `roadmap`
 - `title`: The title of the article (h1 headline)
 - `description`: A description, which will be shown in the Featured blog post
   in the blog overview, and also as an introductory text in the blog article
-- `canonical`: This is used to point to a canonical url (mostly for refering to
-  the original source of a post, in case it is duplicated content)
 
 > **For Maintainers:** The implementation for the frontmatter logic can be found in the
-`common/BlogFrontmatter.re` module. 
+`common/BlogFrontmatter.res` module.
 
 ### Writing Markdown Content
 

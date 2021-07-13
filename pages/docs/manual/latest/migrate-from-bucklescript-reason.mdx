@@ -15,12 +15,32 @@ ReScript is a rebranding and cleanup of BuckleScript (since `v8.2.0`) & Reason (
 
 There are lots of exciting improvements in the new syntax (features, speed, error messages, etc.). The upgrade is trivial, backward-compatible and can be done on a per-file basis:
 
-- Upgrade your project to `bs-platform 8.2.0` or later.
-- `node_modules/.bin/bsc -format MyFile.re > MyFile.res`
+```
+npm install rescript@9 --save-dev
 
-**That's it**! `MyFile.re` could be any `.re`, `.rei`, `.ml` and `.mli` file.
+# Also works with .rei / .ml / .mli / etc
+npx rescript convert src/MyFile.re
+```
 
 Enjoy the improved experience!
+
+### Upgrade Individual Folders
+
+This is useful for per-directory convertions:
+
+```console
+# *.rei, *.ml, *.mli,....
+for f in your-folder/**/*.re; do; node_modules/rescript convert $f && rm $f; done;
+```
+
+### Upgrade an Entire Codebase
+
+In case you are confident in converting your codebase in one step, use the following:
+
+```
+npx rescript convert -all
+```
+
 
 ## Difference With Old Reason
 
@@ -36,8 +56,8 @@ Enjoy the improved experience!
 - First class module: from `(module S: Student)` to `module(S: Student)`.
 - No custom infix operator for now (including `mod`).
 - Object access: from `settings##visible #= true` to `settings["visible"] = true`. Rejoice!
-- Object: from `Js.t({"age": int})` to just `{"age": int}`. The `Js.t` part is now implicit.
-- Attribute: from `[@bs.deriving accessors]` to `@bs.deriving(accessors)`. From `[%re bla]` to `%re(bla)`.
+- Object: from `Js.t({"age": int})` to just `{"age": int}`. The `Js.t` part is now uneeded.
+- Attribute: from `[@myAttribute "hello"]` to `@myAttribute("hello")`. From `[%re bla]` to `%re(bla)`.
 - Removed dereference syntax `result^`. Just use `result.contents`.
 - `fun` pattern matching syntax removed.
 - Type declaration is non-recursive by default, consistent with let bindings. To have recursive types, use `type rec myList<'a> = Nil | Cons('a, myList<'a>)`.

@@ -1,42 +1,24 @@
 {
-  "$schema": "https://raw.githubusercontent.com/rescript-lang/rescript-compiler/master/docs/docson/build-schema.json",
   "name": "rescript-lang.org",
   "namespace": false,
   "reason": {
     "react-jsx": 3
   },
-  "refmt": 3,
   "bs-dependencies": [
-    "reason-react",
-    "bs-fetch",
-    "@glennsl/bs-json",
-    "reason-promise"
+    "@rescript/react",
+    "@ryyppy/rescript-promise"
   ],
   "ppx-flags": [],
   "sources": [
     {
-      "dir": "common"
-    },
-    {
-      "dir": "bindings"
-    },
-    {
-      "dir": "pages",
-      "subdirs": true
-    },
-    {
-      "dir": "re_pages",
+      "dir": "src",
       "subdirs": true
     },
     {
       "dir": "scripts",
-      "subdirs": true
-    },
-    {
-      "dir": "components",
-      "subdirs": true
-    },
-    "layouts"
+      "subdirs": true,
+      "type": "dev"
+    }
   ],
   "package-specs": {
     "module": "es6",
@@ -45,10 +27,8 @@
   "warnings": {
     "error": "+8"
   },
-  "suffix": ".bs.js",
+  "suffix": ".mjs",
   "bsc-flags": [
-    "-bs-no-version-header",
-    "-bs-super-errors",
     "-bs-g"
   ],
   "gentypeconfig": {

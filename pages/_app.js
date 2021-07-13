@@ -6,6 +6,14 @@
   //return <Component {...pageProps} />
 //}
 
-import make from "../common/App.bs";
+import "styles/main.css";
+import "styles/utils.css";
+import "codemirror/lib/codemirror.css";
+import "styles/cm.css";
+import "styles/docson.css";
 
-export default make;
+import {make as ResApp} from "src/common/App.mjs";
+
+export default function App(props) {
+  return <ResApp {...props} />
+};
